@@ -1,0 +1,36 @@
+export default function Briefcase1Icon({
+  className,
+  ...props
+}: {
+  className?: string;
+  [key: string]: any;
+}) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      className={className}
+      {...props}
+    >
+      <path
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M5 16h14v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zM4 7h16v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"
+      />
+      <path
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth={2.25}
+        d="M12 12h.01v.01H12z"
+      />
+      <path
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9z"
+      />
+    </svg>
+  );
+}
