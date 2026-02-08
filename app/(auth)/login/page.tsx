@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LoginForm from "../_components/LoginForm";
+import Link from "next/link";
 
 const LoginPage = () => {
   return (
@@ -21,6 +22,13 @@ const LoginPage = () => {
       <main className="w-full">
         <LoginForm />
       </main>
+
+      <footer className="b2-r fixed flex-center bottom-0 h-10 w-full bg-white">
+        Belum punya akun?&nbsp;
+        <Link href="/register" className="text-primary">
+          Buat Akun
+        </Link>
+      </footer>
     </div>
   );
 };

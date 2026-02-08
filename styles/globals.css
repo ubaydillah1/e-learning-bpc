@@ -82,7 +82,7 @@
 
   --font-poppins: "Poppins", sans-serif;
 
-  --P500: #ff8a00;
+  --P500: #ff961a;
   --P400: #ff9f2e;
   --P300: #ffb866;
   --P200: #ffdda8;
@@ -174,9 +174,9 @@
 
   --border: #4a5468;
   --input: #4a5468;
-  --ring: #ff9f2e;
+  --ring: #ff8a00;
 
-  --primary: #ff9f2e;
+  --primary: #eeee;
   --primary-foreground: #1a202c;
 
   --accent: #4a5468;
@@ -200,6 +200,10 @@
   }
   body {
     @apply bg-background font-poppins text-neutral-n900;
+    /* b2-r */
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 400;
   }
 }
 
@@ -253,7 +257,7 @@
   .b1-b {
     font-size: 18px;
     line-height: 150%;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .b2-r {
