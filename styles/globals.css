@@ -10,6 +10,12 @@
   --color-primary-b200: var(--B200);
   --color-primary-b100: var(--B100);
 
+  --color-primary-p100: var(--P100);
+  --color-primary-p200: var(--P200);
+  --color-primary-p300: var(--P300);
+  --color-primary-p400: var(--P400);
+  --color-primary-p500: var(--P500);
+
   --color-neutral-n900: var(--N900);
   --color-neutral-n800: var(--N800);
   --color-neutral-n700: var(--N700);
@@ -82,7 +88,7 @@
 
   --font-poppins: "Poppins", sans-serif;
 
-  --P500: #ff961a;
+  --P500: #ff8a00;
   --P400: #ff9f2e;
   --P300: #ffb866;
   --P200: #ffdda8;
@@ -245,7 +251,7 @@
   .h4 {
     font-size: 32px;
     line-height: 125%;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .b1-r {
@@ -281,7 +287,7 @@
   .b3-b {
     font-size: 12px;
     line-height: 150%;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .b4-r {
@@ -366,5 +372,12 @@
     font-size: 8px;
     line-height: 124%;
     font-weight: 600;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const LoginPage = () => {
   return (
-    <div className="min-h-screen overflow-hidden text-center flex-center flex-col gap-14">
+    <div className="min-h-screen overflow-hidden text-center flex-center flex-col gap-14 ">
       <header className="w-full">
         <Image
           alt="logo"

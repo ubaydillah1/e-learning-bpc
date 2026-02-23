@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { RegisterInput } from "../_form/register";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../../../components/ErrorMessage";
 
 interface RegisterStep2Props {
   register: UseFormRegister<RegisterInput>;
@@ -26,7 +26,7 @@ const RegisterStep2 = ({ register, errors }: RegisterStep2Props) => {
 
       <div className="grid gap-2">
         <Label className="b2-r">Anak ke-</Label>
-        <Input className="text-sm" {...register("childOrder")} />
+        <Input type="number" className="text-sm" {...register("childOrder")} />
       </div>
 
       <div className="grid gap-2">

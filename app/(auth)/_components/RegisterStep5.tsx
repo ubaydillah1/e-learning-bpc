@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { RegisterInput } from "../_form/register";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../../../components/ErrorMessage";
 
 interface RegisterStep5Props {
   register: UseFormRegister<RegisterInput>;

@@ -1,15 +1,23 @@
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/select-native";
 import { Label } from "@/components/ui/label";
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import {
+  UseFormRegister,
+  FieldErrors,
+  Control,
+  Controller,
+} from "react-hook-form";
+import { format } from "date-fns";
 import { RegisterInput } from "../_form/register";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../../../components/ErrorMessage";
 
 interface RegisterStep1Props {
   register: UseFormRegister<RegisterInput>;
   errors: FieldErrors<RegisterInput>;
+  control: Control<RegisterInput>;
 }
 
-const RegisterStep1 = ({ register, errors }: RegisterStep1Props) => {
+const RegisterStep1 = ({ register, errors, control }: RegisterStep1Props) => {
   return (
     <>
       <div className="grid gap-2">
@@ -24,7 +32,7 @@ const RegisterStep1 = ({ register, errors }: RegisterStep1Props) => {
         <ErrorMessage message={errors.nickname?.message} />
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 items-start">
         <div className="grid gap-2">
           <Label className="b2-r">Tempat Lahir</Label>
           <Input className="text-sm" {...register("birthPlace")} />
@@ -33,21 +41,53 @@ const RegisterStep1 = ({ register, errors }: RegisterStep1Props) => {
 
         <div className="grid gap-2">
           <Label className="b2-r">Tanggal Lahir</Label>
-          <Input type="date" className="text-sm" {...register("birthDate")} />
+          <Controller
+            control={control}
+            name="birthDate"
+            render={({ field }) => (
+              <Input
+                type="date"
+                className="text-sm"
+                value={field.value ? new Date(field.value) : undefined}
+                onChange={(date: Date | undefined) =>
+                  field.onChange(date ? format(date, "yyyy-MM-dd") : "")
+                }
+              />
+            )}
+          />
           <ErrorMessage message={errors.birthDate?.message} />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 items-start">
         <div className="grid gap-2">
           <Label className="b2-r">Kelamin</Label>
-          <Input className="text-sm" {...register("gender")} />
+          <NativeSelect
+            className="text-sm"
+            {...register("gender")}
+            defaultValue=""
+            options={["Laki-laki", "Perempuan"]}
+            placeholder=""
+          />
           <ErrorMessage message={errors.gender?.message} />
         </div>
 
         <div className="grid gap-2">
           <Label className="b2-r">Agama</Label>
-          <Input className="text-sm" {...register("religion")} />
+          <NativeSelect
+            className="text-sm"
+            {...register("religion")}
+            defaultValue=""
+            options={[
+              "Islam",
+              "Kristen Protestan",
+              "Kristen Katolik",
+              "Hindu",
+              "Buddha",
+              "Khonghucu",
+            ]}
+            placeholder=""
+          />
           <ErrorMessage message={errors.religion?.message} />
         </div>
       </div>

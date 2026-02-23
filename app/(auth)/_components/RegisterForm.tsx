@@ -21,6 +21,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     trigger,
   } = useForm<RegisterInput>({
@@ -61,7 +62,13 @@ const RegisterForm = () => {
         <StepperHeader step={step} />
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-          {step === 1 && <RegisterStep1 register={register} errors={errors} />}
+          {step === 1 && (
+            <RegisterStep1
+              register={register}
+              errors={errors}
+              control={control}
+            />
+          )}
           {step === 2 && <RegisterStep2 register={register} errors={errors} />}
           {step === 3 && <RegisterStep3 register={register} errors={errors} />}
           {step === 4 && <RegisterStep4 register={register} errors={errors} />}

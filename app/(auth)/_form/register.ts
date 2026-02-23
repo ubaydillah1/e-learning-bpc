@@ -4,7 +4,7 @@ export const registerSchema = z.object({
   fullName: z.string().min(1, "Nama lengkap wajib diisi"),
   nickname: z.string().min(1, "Nama panggilan wajib diisi"),
   birthPlace: z.string().min(1, "Wajib diisi"),
-  birthDate: z.string().min(1, "Wajib diisi"),
+  birthDate: z.string({ message: "Wajib diisi" }).min(1, "Wajib diisi"),
   gender: z.string().min(1, "Wajib diisi"),
   religion: z.string().min(1, "Wajib diisi"),
   address: z.string().min(1, "Alamat wajib diisi"),

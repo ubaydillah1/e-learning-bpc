@@ -11,7 +11,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { LoginFormInput, loginInputSchema } from "../_form/login";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../../../components/ErrorMessage";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
