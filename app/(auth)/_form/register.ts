@@ -12,8 +12,8 @@ export const registerSchema = z.object({
   phone: z.string().min(10, "No HP tidak valid"),
   email: z.email("Email tidak valid"),
   childOrder: z.string().optional(),
-  school: z.string().optional(),
-  grade: z.string().optional(),
+  school: z.string().min(1, "Asal sekolah wajib diisi"),
+  grade: z.string().min(1, "Kelas wajib diisi"),
 
   branch: z.string().min(1, "Cabang bimbel wajib diisi"),
   source: z.string().optional(),

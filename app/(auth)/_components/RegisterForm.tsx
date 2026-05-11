@@ -26,6 +26,7 @@ const RegisterForm = () => {
     trigger,
   } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
+    mode: "onChange",
   });
 
   const stepFields: Record<number, (keyof RegisterInput)[]> = {
@@ -38,7 +39,7 @@ const RegisterForm = () => {
       "religion",
       "address",
     ],
-    2: ["phone", "email"],
+    2: ["phone", "email", "childOrder", "school", "grade"],
     3: ["branch"],
     4: ["parentName", "parentPhone"],
     5: ["token"],
@@ -76,7 +77,7 @@ const RegisterForm = () => {
 
           <div className="flex gap-3 pt-2">
             {step > 1 && (
-              <Button type="button" variant="outline" onClick={back}>
+              <Button type="button" variant="outline" className="flex-1" onClick={back}>
                 Kembali
               </Button>
             )}

@@ -34,8 +34,10 @@ export const DateInput = React.forwardRef<HTMLButtonElement, DateInputProps>(
             variant="outline"
             disabled={disabled}
             className={cn(
-              "w-full justify-start text-left font-normal border-input text-foreground h-9 px-3",
-              !value && "text-muted-foreground",
+              "w-full justify-start text-left font-normal border-input text-neutral-n900 h-9 px-3 focus-visible:border-primary-p500",
+              "hover:bg-transparent hover:text-neutral-n900 shadow-none",
+              isOpen && "border-primary-p500",
+              !value && "text-neutral-n400",
               className,
             )}
           >
