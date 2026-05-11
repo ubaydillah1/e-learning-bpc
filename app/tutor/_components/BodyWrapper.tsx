@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import NavbarTop from "./NavbarTop";
 import AbsentSection from "./section/AbsentSection";
+import ConsultationSection from "./section/ConsultationSection";
 
 export type ActiveTabType = "ABSENSI" | "KONSULTASI" | "BELAJAR";
 
@@ -64,6 +65,7 @@ const BodyWrapper = () => {
 
       <main className="bg-neutral-n100 pt-5 pb-20 px-5">
         {activeTab === "ABSENSI" && <AbsentSection />}
+        {activeTab === "KONSULTASI" && <ConsultationSection />}
       </main>
     </>
   );
