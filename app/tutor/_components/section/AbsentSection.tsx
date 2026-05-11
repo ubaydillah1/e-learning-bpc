@@ -62,9 +62,11 @@ const AbsentSection = () => {
         </p>
 
         <div className="flex flex-col gap-2">
-          <Button variant="outline" className="w-full">
-            List Absen
-          </Button>
+          <Link href="/tutor/attendance-list">
+            <Button variant="outline" className="w-full">
+              List Absen
+            </Button>
+          </Link>
           <Button
             onClick={() => router.push("/tutor/permanent-attendance")}
             className="w-full bg-primary-p500 hover:bg-primary-p400 text-white"

@@ -5,7 +5,6 @@ import PageHeader from "@/components/PageHeader";
 import AttendanceForm from "./_components/AttendanceForm";
 import SuccessModal from "./_components/SuccessModal";
 import WorkingHoursModal from "./_components/WorkingHoursModal";
-import { UserIcon } from "@/public/assets/icons";
 
 const PermanentAttendancePage = () => {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
@@ -29,16 +28,18 @@ const PermanentAttendancePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-n100 pb-10">
+    <div className="flex flex-col min-h-screen bg-neutral-n100">
       <PageHeader fallbackHref="/tutor" />
 
       {/* Content */}
-      <main className="px-5 pt-6 max-w-md mx-auto">
-        <AttendanceForm
-          onSubmit={handleAttendanceSubmit}
-          onOpenDefaultHours={() => setIsWorkingHoursOpen(true)}
-          defaultHours={defaultHours}
-        />
+      <main className="flex flex-1 justify-center items-center px-5 py-6 pb-[64px]">
+        <div className="w-full max-w-md">
+          <AttendanceForm
+            onSubmit={handleAttendanceSubmit}
+            onOpenDefaultHours={() => setIsWorkingHoursOpen(true)}
+            defaultHours={defaultHours}
+          />
+        </div>
       </main>
 
       {/* Modals */}

@@ -31,14 +31,14 @@ export default function PageHeader({
           <ArrowLeftIcon className="size-6 text-neutral-n900" />
         </button>
       )}
-      
-      <div className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
-        {title && typeof title === "string" ? (
+
+      {title && typeof title === "string" ? (
+        <div className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
           <h1 className="b1-b">{title}</h1>
-        ) : (
-          title
-        )}
-      </div>
+        </div>
+      ) : title ? (
+        <div className="flex-1 min-w-0 ml-3">{title}</div>
+      ) : null}
     </header>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -10,6 +11,13 @@ import { DateInput } from "@/components/ui/date-input";
 import { Card } from "@/components/ui/card";
 import { UserIcon } from "@/public/assets/icons";
 import ErrorMessage from "@/components/ErrorMessage";
+import { NativeSelect } from "@/components/ui/select-native";
+
+export const TIME_OPTIONS = Array.from({ length: 31 }, (_, i) => {
+  const hour = Math.floor(i / 2) + 7;
+  const minute = i % 2 === 0 ? "00" : "30";
+  return `${hour.toString().padStart(2, "0")}:${minute}`;
+});
 
 const attendanceSchema = z.object({
   tutorName: z.string().min(1, "Nama tutor harus diisi"),
@@ -41,12 +49,20 @@ const AttendanceForm = ({
     formState: { errors },
   } = useForm<AttendanceFormValues>({
     resolver: zodResolver(attendanceSchema),
+    mode: "onChange",
     defaultValues: {
       tutorName: "",
-      arrivalTime: "",
-      departureTime: "",
+      arrivalTime: defaultHours.arrivalTime || "",
+      departureTime: defaultHours.departureTime || "",
     },
   });
+
+  useEffect(() => {
+    reset((prev) => ({
+      ...prev,
+      ...defaultHours,
+    }));
+  }, [defaultHours, reset]);
 
   return (
     <Card className="px-5 py-6">
@@ -54,7 +70,7 @@ const AttendanceForm = ({
         <div className="bg-accent-y100 flex-center size-6 rounded-full">
           <UserIcon className="size-3 text-accent-y500" />
         </div>
-        <p className="b1-b text-neutral-n900">Isi Formulir Absensi</p>
+        <p className="b1-b text-neutral-n900">Absensi Tutor Tetap</p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
@@ -62,10 +78,7 @@ const AttendanceForm = ({
           {/* Tutor Name */}
           <div className="grid gap-2">
             <Label className="b2-r">Nama Tutor</Label>
-            <Input
-              className="text-sm"
-              {...register("tutorName")}
-            />
+            <Input className="text-sm" {...register("tutorName")} />
             <ErrorMessage message={errors.tutorName?.message} />
           </div>
 
@@ -89,17 +102,21 @@ const AttendanceForm = ({
           <div className="grid grid-cols-2 gap-3 items-start">
             <div className="grid gap-2">
               <Label className="b2-r">Jam Datang</Label>
-              <Input
-                className="text-sm text-center"
+              <NativeSelect
+                className="text-sm"
                 {...register("arrivalTime")}
+                options={TIME_OPTIONS}
+                placeholder=""
               />
               <ErrorMessage message={errors.arrivalTime?.message} />
             </div>
             <div className="grid gap-2">
               <Label className="b2-r">Jam Pulang</Label>
-              <Input
-                className="text-sm text-center"
+              <NativeSelect
+                className="text-sm"
                 {...register("departureTime")}
+                options={TIME_OPTIONS}
+                placeholder=""
               />
               <ErrorMessage message={errors.departureTime?.message} />
             </div>

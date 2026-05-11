@@ -13,10 +13,10 @@ const ManualAttendancePage = () => {
   const [selectedClass, setSelectedClass] = useState("9");
 
   return (
-    <div className="flex flex-col h-[calc(100vh-70px)] bg-neutral-n100">
+    <div className="flex flex-col h-dvh bg-neutral-n100">
       <PageHeader
         title={
-          <div className="flex-1 relative">
+          <div className="relative">
             <input
               type="text"
               placeholder="Cari nama siswa"

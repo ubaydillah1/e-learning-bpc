@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,6 +15,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import ErrorMessage from "@/components/ErrorMessage";
+import { NativeSelect } from "@/components/ui/select-native";
+import { TIME_OPTIONS } from "./AttendanceForm";
 
 const workingHoursSchema = z.object({
   arrivalTime: z.string().min(1, "Jam datang harus diisi"),
@@ -38,9 +41,11 @@ const WorkingHoursModal = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<WorkingHoursFormValues>({
     resolver: zodResolver(workingHoursSchema),
+    mode: "onChange",
     defaultValues: defaultValues || {
       arrivalTime: "",
       departureTime: "",
@@ -74,18 +79,22 @@ const WorkingHoursModal = ({
           <div className="space-y-4">
             <div className="grid gap-2 text-left">
               <Label className="b2-r">Jam Datang</Label>
-              <Input
+              <NativeSelect
                 className="text-sm h-11"
                 {...register("arrivalTime")}
+                options={TIME_OPTIONS}
+                placeholder="Pilih jam"
               />
               <ErrorMessage message={errors.arrivalTime?.message} />
             </div>
 
             <div className="grid gap-2 text-left">
               <Label className="b2-r">Jam Pulang</Label>
-              <Input
+              <NativeSelect
                 className="text-sm h-11"
                 {...register("departureTime")}
+                options={TIME_OPTIONS}
+                placeholder="Pilih jam"
               />
               <ErrorMessage message={errors.departureTime?.message} />
             </div>
